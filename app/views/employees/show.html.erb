@@ -1,0 +1,53 @@
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+<center><h1><u>EMPLOYEES</u></h1></center>
+
+<center>
+<table>
+    <tr>
+        <th> ID </th>
+        <th> EMPLOYEE ID </th>
+        <th> NAME </th>
+        <th> COMPANY </th>
+        <th> DATE OF JOINING </th>
+        <th> DEPARTMENT </th>
+        <th> LEAVES </th>
+        <th> ACTIVE </th>
+        <th> MANAGER </th>
+        <th> ACTIONS </th>
+        <th> MANAGER'S DETAILS </th
+    </tr>
+    
+    <tr>
+            <td><%= @employee.id%></td>
+            <td><%= @employee.emp_id%></td>
+            <td><%= @employee.name%></td>
+            <td><%= @employee.company%></td>
+            <td><%= @employee.date_of_joining%></td>
+            <td><%= @employee.department%></td>
+            <td><%= @employee.leaves%></td>
+            <td><% if @employee.is_active %> Yes <%else%>No<%end%></td>
+            <td><% if @employee.is_manager %> Yes <%else%>No<%end%></td>
+            <td>
+              <%= link_to 'Edit',edit_employee_path(@employee)%>
+              <br>
+              <%= link_to 'Delete',delete_page_path(@employee), method: :delete%>
+            </td>
+            <td><% if @employee.manager_id %>  <%= link_to 'Show Manager Details',get_manager_path(@employee)%> <%else%>---<%end%></td>
+        </tr>
+   
+</table>
+
+<p> 
+</center>

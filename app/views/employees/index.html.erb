@@ -1,0 +1,43 @@
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+<center><h1><u>EMPLOYEES</u></h1></center>
+
+<center>
+<table>
+    <tr>
+        <th> EMPLOYEE ID </th>
+        <th> NAME </th>
+        <th> ACTIVE </th>
+        <th> MANAGER </th>
+        <th> ACTIVITY </th
+    </tr>
+    <% @employees.each do |employee|%>
+    <tr>
+            <td><%= employee.emp_id%></td>
+            <td><%= employee.name%></td>
+            <td><% if employee.is_active %> Yes <%else%>No<%end%></td>
+            <td><% if employee.is_manager %> Yes <%else%>No<%end%></td>
+            <td><% if employee.is_active %>  <%= link_to 'Disable',activity_page_path(employee)%> <%else%><%= link_to 'Enable',activity_page_path(employee)%><%end%></td>
+            <td>
+                <%= link_to 'More Details',employee_path(employee)%>
+                <br>
+            
+            </td>
+    </tr>
+     <%end%>
+</table>
+
+<p> 
+<%= link_to 'Create a new employee',new_employee_path%>
+</center>
